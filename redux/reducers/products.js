@@ -55,7 +55,7 @@ const CartProductReducers = (state = initialState, action) => {
         case ActionTypes.ADJUSTMENT_QTY:
             return {
                 ...state,
-                carts: state.carts.map((item) => item.id === item.payload.id ? {...item, quantity: +action.payload.id } : item)
+                carts: state.carts.map((item) => item.id === action.payload.id ? {...item, quantity: +action.payload.quantity } : item)
             }
         case ActionTypes.LOAD_CURRENT_ITEMS:
             return {
