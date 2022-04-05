@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { AdjustmentQty, RemoveFromCart } from "../redux/actions/products"
 
-const ItemsInCart = ({ id, images, title, description, prices, quantity, removeItems }) => {
+const ItemsInCart = ({ id, images, title, description, prices, quantity, removeItems, AdjustmentQty }) => {
     const [tempQuantity, setTempQuantity] = useState(quantity)
 
     const AddQuantity = () => {
@@ -25,12 +25,13 @@ const ItemsInCart = ({ id, images, title, description, prices, quantity, removeI
                     <h1 className="font-bold text-yellow-500 text-md">$ {prices}</h1>
                     <h1 className="font-bold text-yellow-500 text-md flex items-center gap-x-2">
                         <button onClick={MinQuantity} className="px-2 pt-0 rounded-full bg-primary txt-white hover:bg-blue-800">-</button>
+                        {/* <input type="number" min={1} name="quantity" id="quantity" value={tempQuantity} onChange={UpdateQuantity} /> */}
                         {tempQuantity}
                         <button onClick={AddQuantity} className="px-2 pt-0  rounded-full bg-primary txt-white hover:bg-blue-800">+</button>
                     </h1>
                 </div>
                 <div className="mt-3 w-full">
-                    <button className="w-full btn btn-primary btn-sm text-xs">Checkout</button>
+                    {/* <button className="w-full btn btn-primary btn-sm text-xs">Checkout</button> */}
                     <button onClick={() => removeItems(id)} className="w-full btn btn-error text-white btn-sm text-xs mt-3">Remove Items</button>
                 </div>
             </div>
