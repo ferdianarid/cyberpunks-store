@@ -22,10 +22,21 @@ const Navbar = ({ listItemInCart }) => {
         <React.Fragment>
             <div className="navbar bg-base-100">
                 <div className="flex-1">
-                    <Link href="/" className="normal-case text-xl font-bold">Bookstores &trade;</Link>
+                    <Link href="/">
+                        <p className="normal-case text-md text-white font-bold">CyberPunk</p>
+                    </Link>
                 </div>
-                <div className="flex-1">
-                    <Link href="/products" className="normal-case text-xl font-bold">Products</Link>
+                <input type="text" placeholder="Type here" className="mx-7 input input-bordered input-sm w-full max-w-xs" />
+                <div className="mr-4 flex space-x-5">
+                    <Link href="/products">
+                        <a className="text-xs hover:text-white font-bold">Products</a>
+                    </Link>
+                    <Link href="/categories">
+                        <a className="text-xs hover:text-white font-bold">Categories</a>
+                    </Link>
+                    <Link href="/articles">
+                        <a className="text-xs hover:text-white font-bold">Articles</a>
+                    </Link>
                 </div>
                 <div className="flex-none">
                     <div className="dropdown dropdown-end">
