@@ -23,3 +23,10 @@ export const books = [{
         description: "If a dog chews shoes whose shoes does he choose?"
     }
 ]
+
+export const singleBook = [{
+    id: 1,
+    title: "The Design of Every Day Things",
+    image: "https://images.tokopedia.net/img/cache/500-square/product-1/2017/10/16/14481426/14481426_471416c0-7776-4a8f-8ee8-02a0e5027c3c_334_500.jpg",
+    description: "If a dog chews shoes whose shoes does he choose?"
+}]
