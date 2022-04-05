@@ -1,6 +1,11 @@
 import Head from 'next/head'
-import { books } from '../apis/books'
+import Image from "next/image"
+import Banner from "../components/moleculs/Banner"
+import { computer } from "../apis/products"
 import PagesLayouts from '../layouts/PagesLayouts'
+import { SmallText } from "../components/atoms/Text"
+import { Indicators } from '../components/atoms/Indicators'
+import { bannerImages } from '../apis/banner'
 
 export default function Homepage() {
   return (
@@ -11,12 +16,31 @@ export default function Homepage() {
           <meta name="description" content="boookstore for find favourite book" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <div className="my-10">
-          <h1 className="font-bold text-2xl mb-2">BookStore with React Redux</h1>
-          <p className="text-sm font-normal text-gray-200">Lets grab your favourite book for weekend</p>
+        <div className="flex items-center justify-between">
+          <div className="my-6 flex items-center space-x-4">
+            {
+              computer.map((items) => (
+                <SmallText key={items.id}>{items.title}</SmallText>
+              ))
+            }
+          </div>
+          <SmallText>Location : <span className="font-bold"> Jombang, East Java </span></SmallText>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-
+        <div className="">
+          <div className="carousel w-full">
+            {
+              bannerImages.map((banner) => (
+                <Banner key={banner.id} itemNumber={banner.id} images={banner.name} />
+              ))
+            }
+          </div>
+          <div className="flex justify-center w-full py-2 gap-2">
+            {
+              bannerImages.map((item) => (
+                <Indicators key={item.id} indNumber={item.id} />
+              ))
+            }
+          </div>
         </div>
       </div>
     </PagesLayouts>
