@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from "next/head"
-import ItemsProducts from '../components/ItemsProducts'
-import PagesLayouts from '../layouts/PagesLayouts'
+import ItemsProducts from '../../components/ItemsProducts'
+import PagesLayouts from '../../layouts/PagesLayouts'
 import { connect } from 'react-redux'
 
 const Products = ({ products }) => {

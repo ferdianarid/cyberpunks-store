@@ -10,20 +10,24 @@ import NumberFormatInt from '../helpers/CurrencyFormat'
 const Cart = ({ CartItems }) => {
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalItems, setTotalItems] = useState(0)
+    const [totalInUSD, setTotalInUSD] = useState(0)
 
     useEffect(() => {
         let currentPrice = 0
         let currentItems = 0
+        let currentUSD = 0
 
         CartItems.forEach((item) => {
             currentPrice += (item.quantity * item.prices) * 15500
             currentItems += item.quantity
+            currentUSD += (item.prices * item.quantity)
         })
 
+        setTotalInUSD(currentUSD)
         setTotalItems(currentItems)
         setTotalPrice(currentPrice)
 
-    }, [CartItems, totalItems, totalPrice, setTotalItems, setTotalPrice])
+    }, [CartItems, totalItems, totalPrice, setTotalItems, setTotalPrice, totalInUSD, setTotalInUSD])
 
     return (
         <React.Fragment>
@@ -35,12 +39,13 @@ const Cart = ({ CartItems }) => {
                 </Head>
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-10 md:mb-0">
                     <div className="my-10">
-                        <h1 className="font-bold text-2xl mb-2">Chart bookstore</h1>
-                        <p className="text-sm font-normal text-gray-200">Lets grab your favourite book for weekend</p>
+                        <h1 className="font-bold text-2xl mb-2">Cart page</h1>
+                        <p className="text-sm font-normal text-gray-200">List of books you have added to cart</p>
                     </div>
                     <div className="flex flex-col space-y-2">
-                        <h1 className="font-bold text-md">Total Quantity : <span className="text-yellow-500"> {totalItems} </span></h1>
-                        <h1 className="font-bold text-md">Total Price : <span className="text-yellow-500"> IDR {NumberFormatInt(totalPrice)} </span></h1>
+                        <h1 className="font-bold text-md">Total Quantity : <span className="text-yellow-500"> {totalItems} items </span></h1>
+                        <h1 className="font-bold text-md">Total Price in USD : <span className="text-yellow-500"> $ {totalInUSD} </span></h1>
+                        <h1 className="font-bold text-md">Total Price in IDR : <span className="text-yellow-500"> IDR {NumberFormatInt(totalPrice)} </span></h1>
                     </div>
                     <button className="btn btn-primary btn-sm text-xs mt-3">Checkout</button>
                 </div>
