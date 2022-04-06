@@ -21,5 +21,17 @@ export const computer = [{
     {
         id: 6,
         title: "Power Bank"
+    },
+    {
+        id: 4,
+        title: "Mouse Optic"
+    },
+    {
+        id: 5,
+        title: "Charger"
+    },
+    {
+        id: 6,
+        title: "Power Bank"
     }
 ]
