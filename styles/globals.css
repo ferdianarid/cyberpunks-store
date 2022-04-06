@@ -13,6 +13,14 @@
     transform: translate3d(821.333px, 1495.33px, 0px);
 }
 
+.rmScroll {
+    scrollbar-width: none;
+}
+
+.rmScroll::-webkit-scrollbar {
+    display: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
