@@ -1,3 +1,3 @@
-export const SmallText = ({ children }) => {
-    return <p className="text-xs font-normal text-gray-200">{children}</p>
+export const SmallText = ({ children, addclass }) => {
+    return <p className={`text-xs mx-3 whitespace-nowrap font-normal text-gray-300 ${addclass}`}>{children}</p>
 }
