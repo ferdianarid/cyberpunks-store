@@ -32,7 +32,7 @@ const initialState = {
         {
             id: 2,
             title: "Design Sprint Books",
-            image: "https://miro.medium.com/max/1400/1*SZNgCxNNqPtRDVZwTAk03A.jpeg",
+            image: "https://www.agence-bradford.com/inside-shopper/wp-content/uploads/2019/05/design-sprint-1.jpg",
             description: "If a dog chews shoes whose shoes does he choose?",
             prices: 352
         },

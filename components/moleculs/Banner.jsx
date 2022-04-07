@@ -5,7 +5,7 @@ const Banner = ({ itemNumber, images }) => {
     return (
         <React.Fragment>
             <div id={`item${itemNumber}`} className="carousel-item w-full max-h-[400px]">
-                <Image src={images} className="w-full rounded-xl object-cover object-top" />
+                <Image src={images} alt="banner" className="w-full rounded-xl object-cover object-top" />
             </div>
         </React.Fragment>
     )

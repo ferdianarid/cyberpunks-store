@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import Image from "next/image"
 import { AdjustmentQty, RemoveFromCart } from "../redux/actions/products"
 
 const ItemsInCart = ({ id, images, title, description, prices, quantity, removeItems, AdjustmentQty }) => {
@@ -17,7 +18,7 @@ const ItemsInCart = ({ id, images, title, description, prices, quantity, removeI
 
     return (
         <div className="card w-full bg-base-200 shadow-xl">
-            <figure><img src={images} className='h-[165px] object-cover w-full' alt="Shoes" /></figure>
+            <figure><Image src={images} height={270} width={300} className='h-[165px] object-cover w-full' alt="Shoes" /></figure>
             <div className="card-body p-4">
                 <h2 className="font-bold text-md">{title}</h2>
                 <p className='font-normal text-sm my-2'>{description}</p>
