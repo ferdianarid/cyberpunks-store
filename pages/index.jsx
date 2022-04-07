@@ -11,7 +11,6 @@ import CardProducts from '../components/organism/CardProducts'
 import sidebanner from "../assets/sidebanner.webp"
 import { category } from "../apis/category"
 import SmallCategory from "../components/moleculs/SmallCategory"
-import 'react-loading-skeleton/dist/skeleton.css'
 import { useEffect, useState } from 'react'
 import CardProductsSkeleton from '../components/skeleton/CardProductsSkeleton'
 import SmallCategorySkeleton from '../components/skeleton/SmallCategorySkeleton'
