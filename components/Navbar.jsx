@@ -3,10 +3,22 @@ import Link from 'next/link'
 import Image from "next/image"
 import { connect } from 'react-redux'
 import NumberFormatInt from '../helpers/CurrencyFormat'
+import { navlink } from '../apis/navlink'
+import Navlink from './atoms/Navlink'
+import NavlinkSkeleton from './skeleton/NavlinkSkeleton'
+import BrandSkeleton from './skeleton/BrandSkeleton'
 
 const Navbar = ({ listItemInCart }) => {
     const [count, setCount] = useState(20)
     const [totalPrice, setTotalPrice] = useState(0)
+
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 4000)
+    }, [])
 
     useEffect(() => {
         let itemCount = 0
@@ -24,23 +36,26 @@ const Navbar = ({ listItemInCart }) => {
             <div className="w-full flex md:flex-row items-start md:items-center flex-col navbar bg-base-100">
                 <div className="w-full flex justify-between">
                     <div className="flex-1">
-                        <Link href="/">
+                        {loading && <BrandSkeleton />}
+                        {!loading && <Link href="/">
                             <p className="normal-case text-md text-white font-bold">CyberPunk</p>
                         </Link>
+                        }
                     </div>
                     <input type="text" placeholder="Type here" className="ml-5 md:ml-0 mx-0 md:mx-7 input input-bordered input-sm w-full max-w-xs" />
                 </div>
                 <div className="w-full flex items-center justify-between mt-6 md:mt-0">
                     <div className="mr-4 flex items-start space-x-5">
-                        <Link href="/products">
-                            <a className="text-xs hover:text-white font-bold">Products</a>
-                        </Link>
-                        <Link href="/categories">
-                            <a className="text-xs hover:text-white font-bold">Categories</a>
-                        </Link>
-                        <Link href="/articles">
-                            <a className="text-xs hover:text-white font-bold">Articles</a>
-                        </Link>
+                        {
+                            loading && navlink.map((list) => (
+                                <NavlinkSkeleton key={list.id} />
+                            ))
+                        }
+                        {
+                            !loading && navlink.map((list) => (
+                                <Navlink key={list.id} title={list.title} urlLocation={list.url} />
+                            ))
+                        }
                     </div>
                     <div className="flex-none flex items-center">
                         <div className="dropdown dropdown-end">
