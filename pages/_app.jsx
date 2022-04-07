@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import store from '../redux/store'
-import '../styles/globals.css'
 import 'react-loading-skeleton/dist/skeleton.css'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (

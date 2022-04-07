@@ -5,7 +5,7 @@ const NavlinkSkeleton = () => {
     return (
         <React.Fragment>
             <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                <Skeleton width={100} height={26} />
+                <Skeleton width={100} height={25} />
             </SkeletonTheme>
         </React.Fragment>
     )
