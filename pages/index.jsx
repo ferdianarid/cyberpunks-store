@@ -11,8 +11,19 @@ import CardProducts from '../components/organism/CardProducts'
 import sidebanner from "../assets/sidebanner.webp"
 import { category } from "../apis/category"
 import SmallCategory from "../components/moleculs/SmallCategory"
+import 'react-loading-skeleton/dist/skeleton.css'
+import { useEffect, useState } from 'react'
+import CardProductsSkeleton from '../components/skeleton/CardProductsSkeleton'
+import SmallCategorySkeleton from '../components/skeleton/SmallCategorySkeleton'
 
 export default function Homepage() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 7000)
+  }, [])
   return (
     <PagesLayouts>
       <div className="">
@@ -55,7 +66,12 @@ export default function Homepage() {
         {/* Small Category */}
         <div className="w-full mt-7 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           {
-            category.map((item) => (
+            loading && category.map((item) => (
+              <SmallCategorySkeleton />
+            ))
+          }
+          {
+            !loading && category.map((item) => (
               <SmallCategory key={item.id} id={item.id} title={item.title} description={item.description} />
             ))
           }
@@ -82,12 +98,21 @@ export default function Homepage() {
                 <Image src={sidebanner} width={190} height={300} alt="sidebanner" />
               </div>
             </div>
+            {loading && books.map((item) => (
+              < CardProductsSkeleton />
+            ))
+            }
             {
-              books.map((item) => (
+              !loading && books.map((item) => (
                 <CardProducts key={item.id} images={item.image} title={item.title} description={item.description} prices={item.prices} />
               ))
             }
           </div>
+        </div>
+
+        {/* Loading Skeleton */}
+        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 p-4">
+
         </div>
       </div>
     </PagesLayouts>
