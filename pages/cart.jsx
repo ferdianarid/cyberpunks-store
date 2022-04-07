@@ -6,11 +6,20 @@ import PagesLayouts from '../layouts/PagesLayouts'
 import { connect } from 'react-redux'
 import ItemsInCart from '../components/ItemsInCart'
 import NumberFormatInt from '../helpers/CurrencyFormat'
+import CardProductsSkeleton from '../components/skeleton/CardProductsSkeleton'
 
 const Cart = ({ CartItems }) => {
     const [totalPrice, setTotalPrice] = useState(0)
     const [totalItems, setTotalItems] = useState(0)
     const [totalInUSD, setTotalInUSD] = useState(0)
+
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 4000)
+    }, [])
 
     useEffect(() => {
         let currentPrice = 0
@@ -50,7 +59,12 @@ const Cart = ({ CartItems }) => {
                     <button className="btn btn-primary btn-sm text-xs mt-3">Checkout</button>
                 </div>
                 <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-10">
-                    {CartItems.map((item) => (
+                    {
+                        loading && CartItems.map((item) => (
+                            <CardProductsSkeleton key={item.id} />
+                        ))
+                    }
+                    {!loading && CartItems.map((item) => (
                         <ItemsInCart key={item.id} id={item.id} title={item.title} images={item.image} description={item.description} prices={item.prices} quantity={item.quantity} />
                     ))}
                 </div>

@@ -22,7 +22,7 @@ export default function Homepage() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 7000)
+    }, 4000)
   }, [])
   return (
     <PagesLayouts>
@@ -67,7 +67,7 @@ export default function Homepage() {
         <div className="w-full mt-7 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
           {
             loading && category.map((item) => (
-              <SmallCategorySkeleton />
+              <SmallCategorySkeleton key={item.id} />
             ))
           }
           {
@@ -99,7 +99,7 @@ export default function Homepage() {
               </div>
             </div>
             {loading && books.map((item) => (
-              < CardProductsSkeleton />
+              <CardProductsSkeleton key={item.id} />
             ))
             }
             {

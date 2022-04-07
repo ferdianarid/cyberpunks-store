@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Head from "next/head"
 import ItemsProducts from '../../components/ItemsProducts'
 import PagesLayouts from '../../layouts/PagesLayouts'
 import { connect } from 'react-redux'
+import CardProductsSkeleton from '../../components/skeleton/CardProductsSkeleton'
 
 const Products = ({ products }) => {
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 4000)
+    }, [])
     return (
         <PagesLayouts>
             <Head>
@@ -18,7 +26,12 @@ const Products = ({ products }) => {
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
                 {
-                    products.map((items) => (
+                    loading && products.map((items) => (
+                        <CardProductsSkeleton key={items.id} />
+                    ))
+                }
+                {
+                    !loading && products.map((items) => (
                         <ItemsProducts key={items.id} id={items.id} images={items.image} title={items.title} description={items.description} prices={items.prices} />
                     ))
                 }
