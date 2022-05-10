@@ -12,8 +12,8 @@ const ItemsProducts = ({ id, images, title, description, prices, addtocart, addw
                 <h2 className="font-bold text-md">{title}</h2>
                 <p className='font-normal text-sm my-2'>{description}</p>
             </div>
-            <div className="card-actions flex items-center mt-4">
-                <h1 className="font-bold text-yellow-500 md:mr-6 mr-10 text-md">$ {prices}</h1>
+            <div className="card-actions flex items-center justify-between mt-4">
+                <h1 className="font-bold text-yellow-500 text-md">$ {prices}</h1>
                 <button onClick={() => addwishlist(id)} className="btn hidden md:block btn-primary btn-sm text-xs"><FaHeart className='text-white' size={16} /></button>
                 <button onClick={() => addtocart(id)} className="btn btn-primary btn-sm text-xs">Buy Now</button>
             </div>
