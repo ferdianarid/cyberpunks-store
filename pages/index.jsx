@@ -1,22 +1,24 @@
 import Head from 'next/head'
 import Image from "next/image"
-import Banner from "../components/moleculs/Banner"
+import { connect } from 'react-redux'
+import { useEffect, useState } from 'react'
 import { computer } from "../apis/products"
+import { category } from "../apis/category"
+import { bannerImages } from '../apis/banner'
+import Banner from "../components/moleculs/Banner"
 import PagesLayouts from '../layouts/PagesLayouts'
+import sidebanner from "../assets/sidebanner.webp"
 import { SmallText } from "../components/atoms/Text"
 import { Indicators } from '../components/atoms/Indicators'
-import { bannerImages } from '../apis/banner'
-import { books } from '../apis/books'
 import CardProducts from '../components/organism/CardProducts'
-import sidebanner from "../assets/sidebanner.webp"
-import { category } from "../apis/category"
 import SmallCategory from "../components/moleculs/SmallCategory"
-import { useEffect, useState } from 'react'
 import CardProductsSkeleton from '../components/skeleton/CardProductsSkeleton'
 import SmallCategorySkeleton from '../components/skeleton/SmallCategorySkeleton'
+import ItemsProducts from '../components/ItemsProducts'
 
-export default function Homepage() {
+function Homepage({ products, wishlist }) {
   const [loading, setLoading] = useState(true)
+  console.log(wishlist)
 
   useEffect(() => {
     setTimeout(() => {
@@ -97,13 +99,14 @@ export default function Homepage() {
                 <Image src={sidebanner} width={190} height={300} alt="sidebanner" />
               </div>
             </div>
-            {loading && books.map((item) => (
-              <CardProductsSkeleton key={item.id} />
-            ))
+            {
+              loading && products.map((items) => (
+                <CardProductsSkeleton key={items.id} />
+              ))
             }
             {
-              !loading && books.map((item) => (
-                <CardProducts key={item.id} images={item.image} title={item.title} description={item.description} prices={item.prices} />
+              !loading && products.map((items) => (
+                <ItemsProducts key={items.id} id={items.id} images={items.image} title={items.title} description={items.description} prices={items.prices} />
               ))
             }
           </div>
@@ -117,3 +120,12 @@ export default function Homepage() {
     </PagesLayouts>
   )
 }
+
+const MapStateToProps = (state) => {
+  return {
+    products: state.products.products,
+    wishlist: state.products.wishlist
+  }
+}
+
+export default connect(MapStateToProps)(Homepage)

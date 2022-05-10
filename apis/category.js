@@ -5,13 +5,13 @@ export const category = [{
     },
     {
         id: 2,
-        title: "Kitchen",
-        description: "All about kitchen"
+        title: "Bread",
+        description: "All about bread cakes"
     },
     {
         id: 3,
-        title: "Clothing",
-        description: "All about clothing"
+        title: "Books",
+        description: "All about books"
     },
     {
         id: 4,
