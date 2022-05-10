@@ -52,6 +52,7 @@ const initialState = {
         }
     ],
     carts: [],
+    wishlist: [],
     currentItems: null
 }
 
@@ -82,6 +83,12 @@ const CartProductReducers = (state = initialState, action) => {
             return {
                 ...state,
                 currentItems: action.payload
+            }
+        case ActionTypes.ADD_WISHLIST:
+            const selectedItems = state.products.find(product => product.id === action.payload.id)
+            return {
+                ...state,
+                wishlist: selectedItems
             }
         default:
             return state

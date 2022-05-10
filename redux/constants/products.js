@@ -1,4 +1,5 @@
 export const ADD_CART = "ADD_CART"
 export const REMOVE_CART = "REMOVE_CART"
 export const ADJUSTMENT_QTY = "ADJUSTMENT_QTY"
+export const ADD_WISHLIST = "ADD_WISHLIST"
 export const LOAD_CURRENT_ITEMS = "LOAD_CURRENT_ITEMS"

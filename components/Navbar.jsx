@@ -33,16 +33,18 @@ const Navbar = ({ listItemInCart }) => {
 
     return (
         <React.Fragment>
-            <div className="w-full flex md:flex-row items-start md:items-center flex-col navbar bg-base-100">
+            <div className="w-full flex md:flex-row items-start md:items-center md:h-24 flex-col navbar bg-base-100">
                 <div className="w-full flex justify-between">
                     <div className="flex-1">
                         {loading && <BrandSkeleton />}
                         {!loading && <Link href="/">
-                            <p className="normal-case text-md text-white font-bold">CyberPunk</p>
+                            <p className="normal-case text-md text-white font-bold">
+                                <Image src="/logo.png" height={36} width={160} alt="logo" />
+                            </p>
                         </Link>
                         }
                     </div>
-                    <input type="text" placeholder="Type here" className="ml-5 md:ml-0 mx-0 md:mx-7 input input-bordered input-sm w-full max-w-xs" />
+                    <input type="text" placeholder="What are you looking for ?" className="ml-5 px-5 md:ml-0 mx-0 md:mx-7 input h-[44px] input-bordered w-full max-w-xs" />
                 </div>
                 <div className="w-full flex items-center justify-between mt-6 md:mt-0">
                     <div className="mr-4 flex items-start space-x-5">

@@ -36,3 +36,12 @@ export const LoadCurrentItems = (items) => {
         }
     }
 }
+
+export const AddWishlist = items => {
+    return {
+        type: ActionTypes.ADD_WISHLIST,
+        payload: {
+            id: items
+        }
+    }
+}
